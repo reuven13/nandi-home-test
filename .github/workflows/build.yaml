@@ -5,24 +5,24 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@3
-    - name: Log in to Docker Hub
-      uses: docker/login-action
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Extract metadata for Docker
-      id: meta
-      uses: docker/metadata-action
-      with:
-        images: reuven13/nandi
-    - name: Build and push
-      uses: docker/build-push-action
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+      - name: Checkout
+        uses: actions/checkout@3
+      - name: Log in to Docker Hub
+        uses: docker/login-action
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action
+        with:
+          images: reuven13/nandi
+      - name: Build and push
+        uses: docker/build-push-action
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
     
     
