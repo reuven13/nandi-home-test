@@ -8,17 +8,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3
       - name: Log in to Docker Hub
-        uses: docker/login-action
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Extract metadata for Docker
         id: meta
-        uses: docker/metadata-action
+        uses: docker/metadata-action@v4
         with:
           images: reuven13/nandi
       - name: Build and push
-        uses: docker/build-push-action
+        uses: docker/build-push-action@v3
         with:
           context: .
           push: true
